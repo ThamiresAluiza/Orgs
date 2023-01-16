@@ -1,14 +1,16 @@
 package com.br.alura.orgs.ui.activity
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.br.alura.orgs.R
 import com.br.alura.orgs.model.Produto
 import com.br.alura.orgs.ui.recycleview.adpter.ListaProdutosAdpter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.math.BigDecimal
-
+    //DATA ACESS OBJECT - DAO
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,12 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main) //
 
-//        val nome = findViewById<TextView>(R.id.nome)
-//        nome.text = "Cesta de frutas"
-//        val descricao = findViewById<TextView>(R.id.descricao)
-//        descricao.text = "Laranja, manga e maçã"
-//        val valor = findViewById<TextView>(R.id.valor)
-//        valor.text = "19.99"
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.adapter = ListaProdutosAdpter(context = this, produtos = listOf(
             Produto(
@@ -40,7 +36,12 @@ class MainActivity : AppCompatActivity() {
             valor = BigDecimal("449.99")
         )
         ))
-        //recyclerView.layoutManager = LinearLayoutManager(this)
+        val fab = findViewById<FloatingActionButton>(R.id.floatingActionButton2)
+        fab.setOnClickListener{
+            val intent = Intent(this, FormularioProdutoActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
 }
