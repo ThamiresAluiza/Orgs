@@ -4,15 +4,17 @@ import com.br.alura.orgs.model.Produto
 
 class ProdutosDao {
 
-    private val produtos = mutableListOf<Produto>()
-
     fun add(produto: Produto){
         produtos.add(produto)
 
     }
 
     fun buscaTodos() : List<Produto> {
-        return produtos.toList()
+        return Companion.produtos.toList()
 
+    }
+
+    companion object {
+        private val produtos = mutableListOf<Produto>()
     }
 }
